@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# Yoga Class Application Form
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Yoga Class Admission Form project! This application allows individuals to enroll in monthly yoga classes and manage their class preferences.
 
-## Available Scripts
+# Getting Started
 
-In the project directory, you can run:
+## Prerequisites
 
-### `npm start`
+Before proceeding, ensure that you have the following installed on your machine:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node.js
+- MongoDB
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To get started with the application, follow these steps:
 
-### `npm test`
+1. Clone the Repository:
+   ```bash
+   git clone https://github.com/rajatvinay03/Yoga-admission-form/
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install Dependencies:
+   ```bash
+   cd Yoga-admission-form
+   npm install
+   ```
+   
+3. Start the Application:
+   ```bash
+   npm start
+   ```
 
-### `npm run build`
+   This will start the Node.js application on the specified port (3000 in this case).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Entities and MetaData
+---
+1. User:
+   - **UserId**: Unique identifier for the User.
+   - **Name**: Name or title of the User.
+   - **Age**: Age of the User.
+   - *Other relevant question metadata*.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Batch:
+   - **BatchID**: Unique identifier for the Batch.
+   - **BatchTiming**: Timing of the particular batch.
+   -  *Other relevant question metadata*.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Payment:
+   - **PaymentID**: Unique identifier for the payment.
+   - **PaymentDate**: On which date the payment was made.
+   - **Amount**: How much amount was paid.
+   - *Other relevant question metadata*.
+---
+## E-R Diagram
 
-### `npm run eject`
+The E-R Diagram illustrates the relationship between the entities and their metadata:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
++-------------------+         +-------------------+         +--------------------+
+|       User        |         |       Batch       |         |     Payment        |    
++-------------------+         +-------------------+         +--------------------+
+| UserID            |1      1 | BatchID           |         | PaymentID          |
+| Name              |---------| BatchTiming       |         | PaymentDate        | 
+| Age               |         | ---               |         | Amount             | 
+| ---               |         |                   |         | ---                |
++-------------------+         +-------------------+         +--------------------+
+         | 1                                                        1 |  
+         --------------------------------------------------------------
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The schematic design showcases the relationships between the entities:
+- Each User can have a single Batch (one-to-one relationship).
+- Each User will pay a single time in each month (one-to-one relationship).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Folder Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The folder structure of the project is as follows:
+```
+yoga-admission-form
+├── public
+├── src
+│   ├── components
+│   ├── ├── ApplicationForm.js
+│   ├── ├── ApplicationForm.css
+│   ├── services
+│   ├── ├── api.js
+│   ├── App.css
+│   └── App.js
+|   |__ Index.js
+├── yoga-admission-backend
+│   ├── models
+│   ├── ├── User.js
+│   ├── routes
+│   ├── ├── enrollment.js
+│   ├── package-lock.json
+│   └── package.json
+|   |__ server.js
+├── package-lock.json
+└── package.json
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- The `components` folder contains React components, such as the AdmissionForm .
+- The `services` folder contains service files, like API communication .
+- The `models` folder contains the model files representing the different entities in the system .
+- The `routes` folder contains the specific route files for each entity, defining the API endpoints(backend).
+- The `package.json` and package-lock.json files contain the project dependencies.
+```
+## Payment Functionality
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The application includes a mock payment function named CompletePayment(). This function accepts the details of the user and payment and simulates the payment process. You don't need to implement this function as it is a placeholder for future payment functionality.
