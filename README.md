@@ -25,12 +25,18 @@ To get started with the application, follow these steps:
    npm install
    ```
    
-3. Start the Application:
+3. Additional(to run this locally):
+   -For frontend
    ```bash
    npm start
    ```
-
-   This will start the Node.js application on the specified port (3000 in this case).
+   -For backend
+   ```bash
+   cd yoga-admission-backend
+   npm run dev
+   ```
+   
+   This will start the Node.js application on the specified port (3000 in this case-Frontend and 3001 in Backend).
 
 ## Entities and MetaData
 ---
@@ -105,6 +111,13 @@ yoga-admission-form
 - The `routes` folder contains the specific route files for each entity, defining the API endpoints(backend).
 - The `package.json` and package-lock.json files contain the project dependencies.
 ```
-## Payment Functionality
+## TODO(Future Work)
 
-The application includes a mock payment function named CompletePayment(). This function accepts the details of the user and payment and simulates the payment process. You don't need to implement this function as it is a placeholder for future payment functionality.
+1.The application includes a mock payment function named CompletePayment(). This function accepts the details of the user and payment and simulates the payment 
+ process. You don't need to implement this function as it is a placeholder for future payment functionality.We can integrate this with razorpay to make the payments 
+ more seamless and multiple options of payments can be provided viz. UPI, card, NEFT, etc.
+
+2.We can also notify the user by adding an additional field of email to send them regular updates of the classes, which can be done using Kafka message queue.
+
+## Scalibilty
+The scaling of the project can be done in various ways . For that reason I have not used a relational database for flexibility purpose.Designing the system with scalability in mind, such as using microservices, serverless, or containerized architectures.Use load balancing to distribute incoming requests across multiple backend servers.Implement caching strategies at various levels (e.g., database caching, HTTP caching) to reduce redundant computations.
