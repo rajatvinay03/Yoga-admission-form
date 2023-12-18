@@ -31,7 +31,7 @@ const AdmissionForm = () => {
 
     if (!formData.age) {
       newErrors.age = 'Age is required.';
-    } else if (isNaN(formData.age) || formData.age >= 18 || formData.age <= 65) {
+    } else if (isNaN(formData.age) || formData.age < 18 || formData.age > 65) {
       newErrors.age = 'Age must be between 18-65.';
     }
 
