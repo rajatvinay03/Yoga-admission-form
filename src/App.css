@@ -1,0 +1,17 @@
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    margin-top: 10px;
+  }
+  
+  .app-title {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 30px;
+    color: #fff;
+    margin-bottom: 20px; 
+  }
+  
