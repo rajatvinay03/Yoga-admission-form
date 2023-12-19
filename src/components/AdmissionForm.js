@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import api from '../services/api';
 import './AdmissionForm.css';
+import axios from 'axios';
 
 const AdmissionForm = () => {
   const [formData, setFormData] = useState({
@@ -47,7 +48,7 @@ const AdmissionForm = () => {
     setErrors({}); 
 
     try {
-      const response = await api.post('/enroll', formData);
+      const response = await axios.post('/enroll', formData);
       console.log('Enrollment response:', response.data);
 
       setSuccessMessage('Enrollment successful!');
